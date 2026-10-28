@@ -1,0 +1,6 @@
+# Set LAN_IP to your PC's fixed LAN address, e.g. 192.168.1.50.
+# Caddy issues a private HTTPS certificate; install its root CA on your phone.
+https://{$LAN_IP}:8443 {
+    tls internal
+    reverse_proxy 127.0.0.1:8000
+}
