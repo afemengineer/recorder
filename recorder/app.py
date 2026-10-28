@@ -120,7 +120,7 @@ def project_detail(conn, project_id):
     for s in conn.execute("SELECT * FROM sections WHERE project_id=? ORDER BY position", (project_id,)):
         item = dict(s)
         item["takes"] = [public_take(t) for t in conn.execute(
-            "SELECT * FROM takes WHERE section_id=? ORDER BY created_at,id", (s["id"],))]
+            "SELECT * FROM takes WHERE section_id=? ORDER BY rowid", (s["id"],))]
         sections.append(item)
     p["sections"] = sections
     return p
